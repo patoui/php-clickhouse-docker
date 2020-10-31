@@ -1,4 +1,4 @@
-# PHP and Clickhouse Docker Setup
+# PHP and ClickHouse Docker Setup
 
 Using this as a sandbox to learn about how PHP and ClickHouse perform queries on large datasets.
 
@@ -13,6 +13,10 @@ docker-compose up
 ## Web
 
 Visit `localhost` or `127.0.0.1`
+
+## ClickHouse
+
+To access ClickHouse run `docker exec -it -uroot tc_clickhouse /usr/bin/clickhouse --client`
 
 #### PHPStorm Note
 
