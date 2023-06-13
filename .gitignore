@@ -1,3 +1,4 @@
 /clickhouse
 /vendor
 .idea
+/flight_data/*

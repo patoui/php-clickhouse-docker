@@ -14,6 +14,33 @@ docker-compose up
 
 Visit `localhost` or `127.0.0.1`
 
+## Testing
+
+Download the dataset found [here](https://clickhouse.com/docs/en/getting-started/example-datasets/opensky) within the `flight_data` directory
+
+Update the file to remove `+00:00` timezone data
+```bash
+sed -i 's/\+00\:00//g' flightlist_20200401_20200430
+```
+
+To test every available client type, simply add `?driver={value}` to the URL, available drivers:
+
+```
+extension = SeasClick extension
+tcp = TCP client lizhichao/one-ck
+http = HTTP client smi2/phpclickhouse
+```
+
+Example test `localhost?driver=tcp`
+
+Prilimary results for batch inserts (mileage may vary based on your hardward):
+```
+Extension = ~10s
+TCP = ~17s
+HTTP = ~20s
+```
+
+
 ## ClickHouse
 
 To access ClickHouse run `docker exec -it -uroot tc_clickhouse /usr/bin/clickhouse --client`

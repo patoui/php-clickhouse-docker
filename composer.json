@@ -7,8 +7,10 @@
     }
   ],
   "require": {
-    "php": "^7.4",
-    "ext-SeasClick": "*"
+    "php": "^7.4|8.x",
+    "ext-SeasClick": "*",
+    "lizhichao/one-ck": "^0.2.9",
+    "smi2/phpclickhouse": "^1.5"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master"
