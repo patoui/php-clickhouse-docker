@@ -33,7 +33,7 @@ http = HTTP client smi2/phpclickhouse
 
 Example test `localhost?driver=tcp`
 
-Prilimary results for batch inserts (mileage may vary based on your hardward):
+Preliminary results for batch inserts (mileage may vary based on your hardward):
 ```
 Extension = ~10s
 TCP = ~17s
