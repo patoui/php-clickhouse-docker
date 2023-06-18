@@ -49,15 +49,12 @@ Example test `localhost?driver=tcp&action=insert_bulk`
 
 Mileage may vary based on your hardware:
 ```
-==== INSERT BULK ====
-Extension = ~10s
-TCP = ~17s
-HTTP = ~21s
-
-==== READ ====
-Extension = ~5s
-TCP = ~7s
-HTTP = ~9s
+insert_bulk - extension - Execution time: 6.6932010650635 seconds
+insert_bulk - tcp - Execution time: 11.734097003937 seconds
+insert_bulk - http - Execution time: 14.504725933075 seconds
+read - extension - Execution time: 6.4836001396179 seconds
+read - tcp - Execution time: 7.4920969009399 seconds
+read - http - Execution time: 9.3841459751129 seconds
 ```
 
 ## ClickHouse
