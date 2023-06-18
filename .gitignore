@@ -1,5 +1,4 @@
 /clickhouse
 /vendor
 .idea
-/flight_data/*
 execution_results.txt

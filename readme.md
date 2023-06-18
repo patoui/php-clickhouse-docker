@@ -2,26 +2,31 @@
 
 Using this as a sandbox to learn about how PHP and ClickHouse perform queries on large datasets.
 
-This repo will use SeasX/SeasClick C++ extension to run ClickHouse queries.
+This repo will use SeasX's [PHP extension](https://github.com/SeasX/SeasClick), lizhichao's [TCP client](https://github.com/lizhichao/one-ck), and smi2's [HTTP client](https://github.com/smi2/phpClickHouse). Note that SeasX's PHP extension uses the transmission control protocol as well (TCP).
 
 ## Installation
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
-
-## Web
-
-Visit `localhost` or `127.0.0.1`
 
 ## Testing
 
-Download the dataset found [here](https://clickhouse.com/docs/en/getting-started/example-datasets/opensky) within the `flight_data` directory
+TLDR; vist the following URLs in order, when they're all done, open `execution_results.txt`
 
-Update the file to remove `+00:00` timezone data
-```bash
-sed -i 's/\+00\:00//g' flightlist_20200401_20200430
 ```
+// insert data
+http://localhost/?driver=extension&action=insert_bulk
+http://localhost/?driver=tcp&action=insert_bulk
+http://localhost/?driver=http&action=insert_bulk
+
+// read data
+http://localhost/?driver=extension&action=read
+http://localhost/?driver=tcp&action=read
+http://localhost/?driver=http&action=read
+```
+
+Note: the dataset originates from [here](https://clickhouse.com/docs/en/getting-started/example-datasets/opensky).
 
 To test every available client type, simply add `?driver={value}&action={value}` to the URL.
 
@@ -40,7 +45,9 @@ read = select the first 1000 rows 500 times
 
 Example test `localhost?driver=tcp&action=insert_bulk`
 
-Preliminary results for batch inserts (mileage may vary based on your hardward):
+## Results
+
+Mileage may vary based on your hardware:
 ```
 ==== INSERT BULK ====
 Extension = ~10s
