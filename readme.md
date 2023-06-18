@@ -26,7 +26,7 @@ http://localhost/?driver=tcp&action=read
 http://localhost/?driver=http&action=read
 ```
 
-Note: the dataset originates from [here](https://clickhouse.com/docs/en/getting-started/example-datasets/opensky).
+Note: the dataset originates from [here](https://clickhouse.com/docs/en/getting-started/example-datasets/opensky). It was slightly modified by removing the timezones to timestamps and shrunk down to meet GitHub's 100MB limit on file size. Total size of the sample file provided is 571705 records.
 
 To test every available client type, simply add `?driver={value}&action={value}` to the URL.
 
@@ -39,7 +39,7 @@ http = HTTP client smi2/phpclickhouse
 
 Available actions:
 ```
-insert_bulk = inserts batches of 1000 rows at a time, inserting a total of 842905 records
+insert_bulk = inserts batches of 1000 rows at a time
 read = select the first 1000 rows 500 times
 ```
 
