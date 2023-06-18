@@ -30,7 +30,7 @@ $client->execute('CREATE TABLE opensky
     altitude_2 Float64
 ) ENGINE = MergeTree ORDER BY (origin, destination, callsign)');
 
-$fp = fopen(dirname(__DIR__) . '/flight_data/flightlist_20200401_20200430.csv', 'rb');
+$fp = fopen(dirname(__DIR__, 2) . '/flight_data/flightlist_20200401_20200430.csv', 'rb');
 $has_skipped_header = false;
 
 $header = fgetcsv($fp);

@@ -23,23 +23,35 @@ Update the file to remove `+00:00` timezone data
 sed -i 's/\+00\:00//g' flightlist_20200401_20200430
 ```
 
-To test every available client type, simply add `?driver={value}` to the URL, available drivers:
+To test every available client type, simply add `?driver={value}&action={value}` to the URL.
 
+Available drivers:
 ```
 extension = SeasClick extension
 tcp = TCP client lizhichao/one-ck
 http = HTTP client smi2/phpclickhouse
 ```
 
-Example test `localhost?driver=tcp`
+Available actions:
+```
+insert_bulk = inserts batches of 1000 rows at a time, inserting a total of 842905 records
+read = select the first 1000 rows 500 times
+```
+
+Example test `localhost?driver=tcp&action=insert_bulk`
 
 Preliminary results for batch inserts (mileage may vary based on your hardward):
 ```
+==== INSERT BULK ====
 Extension = ~10s
 TCP = ~17s
-HTTP = ~20s
-```
+HTTP = ~21s
 
+==== READ ====
+Extension = ~5s
+TCP = ~7s
+HTTP = ~9s
+```
 
 ## ClickHouse
 

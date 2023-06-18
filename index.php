@@ -10,21 +10,23 @@ if (!$driver) {
     die('No driver specified');
 }
 
-if ($driver === 'extension') {
-    $time_start = microtime(true);
-    require_once __DIR__ . '/src/extension.php';
-    $time_end = microtime(true);
-} elseif ($driver === 'http') {
-    $time_start = microtime(true);
-    require_once __DIR__ . '/src/http.php';
-    $time_end = microtime(true);
-} elseif ($driver === 'tcp') {
-    $time_start = microtime(true);
-    require_once __DIR__ . '/src/tcp.php';
-    $time_end = microtime(true);
+$action = $_GET['action'] ?? null;
+
+if (!$action) {
+    die('No action specified');
 }
 
+$filepath = __DIR__ . "/src/{$action}/{$driver}.php";
+
+if (! file_exists($filepath)) {
+    die('Unknown action and driver combo');
+}
+
+$time_start = microtime(true);
+require_once $filepath;
+$time_end = microtime(true);
+
 $time     = $time_end - $time_start;
-$output   = "{$driver} - Execution time: {$time} seconds";
-echo $output . PHP_EOL;
+$output   = "{$action} - {$driver} - Execution time: {$time} seconds" . PHP_EOL;
+echo $output;
 file_put_contents(__DIR__ . '/execution_results.txt', $output, FILE_APPEND);
